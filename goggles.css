@@ -1,0 +1,34 @@
+.cautious-goggles-censored {
+  position: relative;
+  cursor: pointer;
+}
+
+.cautious-goggles-censored * {
+  visibility: hidden !important;
+}
+
+.cautious-goggles-censored::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 10000;
+  border-radius: 5px;
+}
+
+.cautious-goggles-censored::after {
+  position: absolute;
+  top: 50%;
+  left: 0.5em;
+  right: 0.5em;
+  margin: -0.75em 0;
+  line-height: 1.5em;
+  text-align: center;
+  content: "CAUTION: may contain spoilers (click to read anyway)";
+  font-family: sans-serif;
+  color: white;
+  z-index: 10001;
+}
