@@ -1,3 +1,5 @@
+![Logo](mlg-goggles.png)
+
 # The Cautious Goggles
 
 A browser extension (Chrome/Firefox/etc) which lets you be cautious about what spoilers you see.
