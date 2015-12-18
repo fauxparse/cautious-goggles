@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cautious Goggles Options</title>
+    <style>
+      label {
+        display: block;
+      }
+
+      textarea {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0.5em 0;
+      }
+
+      #status {
+        line-height: 3em;
+        vertical-align: middle;
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+
+  <body>
+    <label for="watchlist">Watchlist:</label>
+    <textarea id="watchlist" placeholder="List of phrases to watch out for (one per line)" rows="10"></textarea>
+    <button id="save">Save</button>
+    <span id="status"></span>
+    <script type="text/javascript" src="options.js"></script>
+  </body>
+</html>

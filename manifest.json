@@ -9,5 +9,11 @@
       "js":      ["porter2.js", "goggles.js"],
       "css":     ["goggles.css"]
     }
-  ]
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  },
+  "web_accessible_resources": [ "script.js" ],
+  "permissions": ["storage"]
 }

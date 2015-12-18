@@ -32,16 +32,19 @@
     /find out/,
     /reveal/,
     /dead/,
-    /discover/,
-    /decide/,
+    /discov/,
+    /decid/,
     /ambush/,
-    /surprise/,
+    /surpris/,
     /intend/,
     /trap/,
-    /persuade/,
+    /persuad/,
     /shoot/,
     /shot/,
-    /find/
+    /find/,
+    /forc/,
+    /announc/,
+    /tell/
   ];
 
   function containsSpoilers(element) {
@@ -67,5 +70,36 @@
     el.parentNode.removeChild(el);
   }
 
-  censorElements(document.querySelectorAll("p"));
+  function escapeRegExp(str) {
+    return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+  }
+
+  function getKeywords(phrase) {
+    var tokenise = /[\w'‘’]+/g, match, results = [];
+
+    while (match = tokenise.exec(phrase)) results.push(match[0]);
+    return results;
+  }
+
+  function censorPageFor(phrase, text) {
+    var keywords = getKeywords(phrase),
+        regexp = new RegExp(keywords.join('\\W+'), 'i');
+
+    if (regexp.test(text)) {
+      console.log('[Cautious Goggles] Page contains possible spoilers for “' + phrase + '”');
+      censorElements(document.querySelectorAll("p"));
+      return true;
+    }
+  }
+
+  chrome.storage.sync.get({
+    watchlist: 'star wars episode 7\nthe force awakens'
+  }, function(items) {
+    var phrases = items.watchlist.split('\n'),
+        text = document.body.innerText;
+
+    for (var i = 0; i < phrases.length; i++) {
+      if (censorPageFor(phrases[i], text)) break;
+    }
+  });
 })();
